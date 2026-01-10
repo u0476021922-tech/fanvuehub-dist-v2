@@ -1,0 +1,367 @@
+{
+  "3": {
+    "inputs": {
+      "seed": 527727666125350,
+      "steps": 8,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "11",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": [
+        "32",
+        0
+      ],
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "clip": [
+        "131",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": [
+        "35",
+        0
+      ],
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "clip": [
+        "131",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "IMAGE/ZIMAGE/0",
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "11": {
+    "inputs": {
+      "shift": 3,
+      "model": [
+        "131",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingAuraFlow",
+    "_meta": {
+      "title": "ModelSamplingAuraFlow"
+    }
+  },
+  "13": {
+    "inputs": {
+      "width": [
+        "30",
+        0
+      ],
+      "height": [
+        "30",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "EmptySD3LatentImage"
+    }
+  },
+  "16": {
+    "inputs": {
+      "unet_name": "z_image_turbo_bf16.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "17": {
+    "inputs": {
+      "vae_name": "z-image-vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "18": {
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "lumina2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "28": {
+    "inputs": {
+      "download_links": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors unet\nhttps://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors clip\nhttps://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors vae z-image-vae.safetensors\nhttps://huggingface.co/Qwen/Qwen2.5-7B-Instruct-GGUF/resolve/main/qwen2.5-7b-instruct-q4_k_m.gguf llm\n",
+      "auto_download": true,
+      "max_concurrent_downloads": 3,
+      "max_download_speed_mbps": 0,
+      "enable_resume": true,
+      "validate_files": false,
+      "enable_notifications": true,
+      "auto_organize": false,
+      "hf_token": "",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
+    },
+    "class_type": "HuggingFaceDownloader",
+    "_meta": {
+      "title": "🤗 HuggingFace Model Downloader Pro"
+    }
+  },
+  "29": {
+    "inputs": {
+      "text": "=== DOWNLOAD REPORT ===\nTotal files: 4\nSuccessful downloads: 0\nAlready existed: 3\nInterrupted: 0\nFailed: 1\nMax concurrent: 3\nSpeed limit: Unlimited\nResume enabled: True\nValidation enabled: False\nAuto-organize: False\n\nDetails:\n✓ z_image_turbo_bf16.safetensors: Already exists (11.46 GB)\n✓ qwen_3_4b.safetensors: Already exists (7.49 GB)\n✓ z-image-vae.safetensors: Already exists (319.77 MB)\n✗ qwen2.5-7b-instruct-q4_k_m.gguf: Download failed - 404 Client Error: Not Found for url: https://huggingface.co/Qwen/Qwen2.5-7B-Instruct-GGUF/resolve/main/qwen2.5-7b-instruct-q4_k_m.gguf",
+      "anything": [
+        "28",
+        0
+      ]
+    },
+    "class_type": "easy showAnything",
+    "_meta": {
+      "title": "Show Any"
+    }
+  },
+  "30": {
+    "inputs": {
+      "width": 0,
+      "height": 1280,
+      "aspect_ratio": "5:4",
+      "direction": "Vertical"
+    },
+    "class_type": "AspectRatioImageSize",
+    "_meta": {
+      "title": "🧩 Aspect Ratio Image Size"
+    }
+  },
+  "31": {
+    "inputs": {
+      "styles": "No Style"
+    },
+    "class_type": "Load Styles CSV",
+    "_meta": {
+      "title": "Load Styles CSV"
+    }
+  },
+  "32": {
+    "inputs": {
+      "delimiter": ", ",
+      "clean_whitespace": "true",
+      "text_a": [
+        "171",
+        0
+      ],
+      "text_b": [
+        "31",
+        0
+      ]
+    },
+    "class_type": "Text Concatenate",
+    "_meta": {
+      "title": "Text Concatenate"
+    }
+  },
+  "34": {
+    "inputs": {
+      "string": "(low quality:1.4), bad anatomy, deformed, blurry, , heavy editing, filters, cartoon, anime",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
+    },
+    "class_type": "String Literal",
+    "_meta": {
+      "title": "NEGATIVE PROMPT"
+    }
+  },
+  "35": {
+    "inputs": {
+      "delimiter": ", ",
+      "clean_whitespace": "true",
+      "text_a": [
+        "34",
+        0
+      ],
+      "text_b": [
+        "31",
+        1
+      ]
+    },
+    "class_type": "Text Concatenate",
+    "_meta": {
+      "title": "Text Concatenate"
+    }
+  },
+  "131": {
+    "inputs": {
+      "lora_01": "Froy_zimage\\sara_zimage.safetensors",
+      "strength_01": 0,
+      "lora_02": "personal\\ZIMAGE\\Aurora_z-image\\aurora_zimage.safetensors",
+      "strength_02": 0,
+      "lora_03": "personal\\ZIMAGE\\Thale_prix_zimage\\Thale_prix_zimage.safetensors",
+      "strength_03": 1,
+      "lora_04": "personal\\ZIMAGE\\ZImage_CockShock.safetensors",
+      "strength_04": 0,
+      "model": [
+        "16",
+        0
+      ],
+      "clip": [
+        "18",
+        0
+      ]
+    },
+    "class_type": "Lora Loader Stack (rgthree)",
+    "_meta": {
+      "title": "Lora Loader Stack (rgthree)"
+    }
+  },
+  "132": {
+    "inputs": {
+      "lora_01": "personal\\ZIMAGE\\Aurora_z-image\\aurora_zimage.safetensors",
+      "strength_01": 1.1,
+      "lora_02": "personal\\sara_zimage\\Sara_zimage1.safetensors",
+      "strength_02": 0,
+      "lora_03": "None",
+      "strength_03": 1,
+      "lora_04": "None",
+      "strength_04": 1
+    },
+    "class_type": "Lora Loader Stack (rgthree)",
+    "_meta": {
+      "title": "Lora Loader Stack (rgthree)"
+    }
+  },
+  "168": {
+    "inputs": {
+      "text": "Hyper-realistic close-up portrait of Iris looking directly at camera with a playful, mischievous smile, her beautiful face filling most of the frame. She's wearing an impossibly tiny electric blue cheerleader outfit that's barely visible at the bottom of frame - sheer blue crop top clinging to her chest showing clear nipple definition, micro-skirt riding up. But the focus is on her gorgeous face: warm genuine smile, bright eyes sparkling with confidence, natural expression. Her facial skin: completely matte finish, visible micro-pores across forehead, nose, and cheeks, fine peach fuzz on upper lip and jawline catching light, subtle natural freckles scattered across nose bridge, uneven skin tone with natural redness on cheeks and nose, fine expression lines around eyes from genuine smile, natural skin texture like real human skin with all imperfections. Soft natural lighting on face, shallow depth of field blurring background, raw portrait photography, 35mm aesthetic.",
+      "prefix": "Select the prefix add to the text",
+      "subject": "👤Select the subject add to the text",
+      "action": "🎬Select the action add to the text",
+      "clothes": "👚Select the clothes add to the text",
+      "environment": "☀️Select the illumination environment add to the text",
+      "background": "🎞️Select the background add to the text",
+      "nsfw": "🔞Select the nsfw add to the text",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
+    },
+    "class_type": "easy prompt",
+    "_meta": {
+      "title": "Prompt"
+    }
+  },
+  "169": {
+    "inputs": {
+      "text": "Hyper-realistic close-up portrait of Iris looking directly at camera with a playful, mischievous smile, her beautiful face filling most of the frame. She's wearing an impossibly tiny electric blue cheerleader outfit that's barely visible at the bottom of frame - sheer blue crop top clinging to her chest showing clear nipple definition, micro-skirt riding up. But the focus is on her gorgeous face: warm genuine smile, bright eyes sparkling with confidence, natural expression. Her facial skin: completely matte finish, visible micro-pores across forehead, nose, and cheeks, fine peach fuzz on upper lip and jawline catching light, subtle natural freckles scattered across nose bridge, uneven skin tone with natural redness on cheeks and nose, fine expression lines around eyes from genuine smile, natural skin texture like real human skin with all imperfections. Soft natural lighting on face, shallow depth of field blurring background, raw portrait photography, 35mm aesthetic.",
+      "anything": [
+        "168",
+        0
+      ]
+    },
+    "class_type": "easy showAnything",
+    "_meta": {
+      "title": "GENERATED PROMPT"
+    }
+  },
+  "171": {
+    "inputs": {
+      "wildcard_text": "Hyper-realistic mirror selfie of Iris in her bedroom, holding phone up capturing her reflection. She's wearing only a tiny oversized white t-shirt that's falling off one shoulder and barely covering her ass, no bra underneath - her perky breasts and hard nipples clearly visible through the thin fabric, hem riding up showing bare thighs and hint of ass cheeks. Looking at camera/phone with cute flirty smile and bedroom eyes, hair messy and sexy. Full body visible in mirror from head to mid-thigh showing her tight young body. Her face: playful seductive expression, matte skin with visible pores, natural freckles, fine peach fuzz, authentic beauty. Her exposed body: completely matte skin on bare shoulders, arms, and thighs, visible micro-pores, fine body hair on thighs catching light, natural skin texture, subtle imperfections. Soft bedroom lighting, mirror frame, raw authentic selfie aesthetic.",
+      "populated_text": "Hyper-realistic mirror selfie of Iris in her bedroom, holding phone up capturing her reflection. She's wearing only a tiny oversized white t-shirt that's falling off one shoulder and barely covering her ass, no bra underneath - her perky breasts and hard nipples clearly visible through the thin fabric, hem riding up showing bare thighs and hint of ass cheeks. Looking at camera/phone with cute flirty smile and bedroom eyes, hair messy and sexy. Full body visible in mirror from head to mid-thigh showing her tight young body. Her face: playful seductive expression, matte skin with visible pores, natural freckles, fine peach fuzz, authentic beauty. Her exposed body: completely matte skin on bare shoulders, arms, and thighs, visible micro-pores, fine body hair on thighs catching light, natural skin texture, subtle imperfections. Soft bedroom lighting, mirror frame, raw authentic selfie aesthetic.",
+      "mode": "reproduce",
+      "seed": 648564726242624,
+      "Select to add Wildcard": "Select the Wildcard to add to the text",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
+    },
+    "class_type": "ImpactWildcardProcessor",
+    "_meta": {
+      "title": "ImpactWildcardProcessor"
+    }
+  }
+}
