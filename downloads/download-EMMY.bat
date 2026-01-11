@@ -1,8 +1,8 @@
 @echo off
-cd /d "%~dp0"
+cd /d "%~dp0.."
 
 echo ============================================================================
-echo   VoxCPM Voice Pack Downloader
+echo   Downloading EMMA LoRA Pack
 echo ============================================================================
 echo.
 
@@ -14,17 +14,12 @@ if %errorlevel% neq 0 (
     exit /b
 )
 
-echo Starting voice download...
-powershell -ExecutionPolicy Bypass -File "scripts\install_voices.ps1"
+echo Handing over to PowerShell...
+powershell -ExecutionPolicy Bypass -File "scripts\download_emma.ps1"
 
 if %errorlevel% neq 0 (
     echo.
-    echo [ERROR] Voice installation failed!
+    echo [ERROR] Download script failed!
     pause
     exit /b %errorlevel%
 )
-
-echo.
-echo Voice pack installed successfully!
-echo You can now use these voices in the Lipsync section.
-pause
