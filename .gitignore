@@ -12,8 +12,10 @@ VoxCPM/
 fanvue-hub/node_modules/
 fanvue-hub/.next/
 fanvue-hub/.env.local
-fanvue-hub/prisma/dev.db
-fanvue-hub/prisma/dev.db-journal
+fanvue-hub/prisma/*.db
+fanvue-hub/prisma/*.db-journal
+fanvue-hub/prisma/*.db-shm
+fanvue-hub/prisma/*.db-wal
 
 # === LOGS & TEMP ===
 logs/
