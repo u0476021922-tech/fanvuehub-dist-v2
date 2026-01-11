@@ -585,6 +585,23 @@ if (Test-Path $LegacyBackup) {
 # 10. Installation Complete
 # Note: Fanvue Hub, Ollama, and VoxCPM will be auto-installed by run.bat on first launch
 
+# 10.5. Install Voice Samples
+Write-Log "`n[Voice Pack] Installing TTS voice samples..."
+$VoiceScriptPath = Join-Path $ScriptPath "install_voices.ps1"
+if (Test-Path $VoiceScriptPath) {
+    try {
+        & $VoiceScriptPath
+        Write-Log "[Voice Pack] Installation complete."
+    }
+    catch {
+        Write-Log "[Voice Pack] Installation failed (non-critical): $($_.Exception.Message)"
+    }
+}
+else {
+    Write-Log "[Voice Pack] Script not found, skipping..."
+}
+Pause-Step
+
 # 11. Final Cleanup
 Write-Log "Skipping desktop shortcut creation (use run.bat)."
 Pause-Step

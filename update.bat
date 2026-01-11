@@ -74,6 +74,10 @@ if exist "fanvue-hub\prisma\schema.prisma" (
     cd ..
 )
 
+:: Install voice samples if missing (silent, non-blocking)
+echo [INFO] Installing voice samples
+powershell -ExecutionPolicy Bypass -File "scripts\install_voices.ps1" >nul 2>&1
+
 echo.
 echo ============================================================================
 echo   UPDATE COMPLETE!
