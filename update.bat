@@ -39,12 +39,12 @@ if not exist .git (
     echo [INFO] Fetching latest version...
     "%GIT%" fetch origin %BRANCH%
     
-    echo [INFO] Applying updates (This may take a moment)...
+    echo [INFO] Applying updates (This may take a moment)
     rem reset --hard ensures we exactly match the repo state for tracked files
     rem It will NOT delete ignored folders (ComfyUI, python_embeded, etc.)
     "%GIT%" reset --hard origin/%BRANCH%
 ) else (
-    echo [INFO] Repository found. pulling changes...
+    echo [INFO] Repository found. Pulling changes
     "%GIT%" fetch origin %BRANCH%
     "%GIT%" reset --hard origin/%BRANCH%
 )
@@ -62,7 +62,7 @@ if %errorlevel% neq 0 (
 
 echo.
 echo [3/3] Post-Update Tasks...
-echo [INFO] Checking dependencies...
+echo [INFO] Checking dependencies
 
 :: Run Prisma generate if schema changed (safe to run always)
 if exist "fanvue-hub\prisma\schema.prisma" (
