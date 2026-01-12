@@ -130,7 +130,7 @@ export default function LipsyncGenerator({
                 body: JSON.stringify({
                     text,
                     characterName,
-                    voicePath: uploadedVoicePath || (selectedPresetVoice ? `voices/${selectedPresetVoice}/voice` : undefined),
+                    voicePath: uploadedVoicePath || (selectedPresetVoice ? `voices/${selectedPresetVoice}` : undefined),
                 }),
             });
 
